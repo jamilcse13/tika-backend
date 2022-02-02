@@ -13,8 +13,8 @@
   - name
   - min_age
 
-  -Vaccine
-    -name
+- Vaccine
+  - name
 - Division
   - name
 - District
@@ -23,7 +23,7 @@
 - Upazila
   - name
   - district_id
-- Vaccination Center
+- VaccinationCenter
   - name
   - upazila_id
   - vaccine_name
