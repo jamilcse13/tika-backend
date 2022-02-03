@@ -19,6 +19,7 @@ class CreateDistrictsTable extends Migration
             $table->unsignedBigInteger('division_id');
             $table->foreign('division_id')->references('id')->on('divisions');
 
+            $table->unsignedBigInteger('enabled')->default(1);
             $table->timestamps();
         });
     }
