@@ -622,3 +622,15 @@ function tika_bd_categories()
 
     return $categories;
 }
+
+function tikaAgeDifference($date) {
+    $dob = new DateTime($date);
+
+    $now = new DateTime();
+
+    $difference = $now->diff($dob);
+
+    $age = $difference->y;
+
+    return  $age;
+}
