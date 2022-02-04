@@ -57,11 +57,11 @@ class CategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Category $category
-     * @return Response
+     * @return Application|Factory|\Illuminate\Contracts\View\View|Response
      */
     public function edit(Category $category)
     {
-        //
+        return view('categories.edit', ['category' => $category]);
     }
 
     /**
@@ -69,11 +69,17 @@ class CategoryController extends Controller
      *
      * @param Request $request
      * @param Category $category
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate(['name' => 'required', 'min_age' => 'required|numeric']);
+
+        $category->name = $request->name;
+        $category->min_age = $request->min_age;
+        $category->save();
+
+        return redirect(route('categories.index'))->with('success', $category->name . ' is updated!');
     }
 
     /**

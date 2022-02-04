@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\People;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -11,11 +13,13 @@ class PeopleController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return void
+     * @return Application|Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        //
+        $peoples = People::paginate();
+
+        return view('peoples.index', ['peoples' => $peoples]);
     }
 
     /**
@@ -54,11 +58,11 @@ class PeopleController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param People $people
-     * @return void
+     * @return Application|Factory|\Illuminate\Contracts\View\View|void
      */
     public function edit(People $people)
     {
-        //
+        return view('peoples.edit', ['people' => $people]);
     }
 
     /**
@@ -66,11 +70,18 @@ class PeopleController extends Controller
      *
      * @param Request $request
      * @param People $people
-     * @return void
+     * @return Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|void
      */
     public function update(Request $request, People $people)
     {
-        //
+        $request->validate(['id_no' => 'required', 'dob' => 'required|date', 'office' => 'required']);
+
+        $people->id_no = $request->id_no;
+        $people->dob = $request->dob;
+        $people->office = $request->office;
+        $people->save();
+
+        return redirect(route('peoples.index'))->with('success', 'Data updated successfully!');
     }
 
     /**

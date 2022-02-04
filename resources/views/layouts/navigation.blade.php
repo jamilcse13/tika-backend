@@ -25,7 +25,31 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('divisions.index')" :active="request()->routeIs('divisions.index')">
-                        {{ __('Divisions') }}
+                        {{ __('Locations') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('people.index')" :active="request()->routeIs('people.index')">
+                        {{ __('People') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('vaccines.index')" :active="request()->routeIs('vaccines.index')">
+                        {{ __('Vaccines') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('vaccination-centers.index')" :active="request()->routeIs('vaccination-centers.index')">
+                        {{ __('Vaccination Centers') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('registrations.index')" :active="request()->routeIs('registrations.index')">
+                        {{ __('Registrations') }}
                     </x-nav-link>
                 </div>
             </div>
